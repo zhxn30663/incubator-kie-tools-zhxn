@@ -23,12 +23,14 @@ import { I18nContextType, I18nDictionariesProvider } from "@kie-tools-core/i18n/
 import { OnlineI18n } from "./OnlineI18n";
 import { en } from "./locales";
 import { de } from "./locales";
+import { zh } from "./locales";
 import { I18nDefaults, I18nDictionaries } from "@kie-tools-core/i18n/dist/core";
 
 export const onlineI18nDefaults: I18nDefaults<OnlineI18n> = { locale: "en", dictionary: en };
 export const onlineI18nDictionaries: I18nDictionaries<OnlineI18n> = new Map([
   ["en", en],
   ["de", de],
+  ["zh", zh],
 ]);
 export const OnlineI18nContext = React.createContext<I18nContextType<OnlineI18n>>({} as any);
 
