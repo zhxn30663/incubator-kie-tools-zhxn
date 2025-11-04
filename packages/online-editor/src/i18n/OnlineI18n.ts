@@ -92,6 +92,14 @@ interface OnlineDictionary
       applyAccelerator: string;
       appliedAt: string;
       applyDisclaimer: string;
+      acceleratorLabel: string;
+      acceleratorsLabel: string;
+      acceleratorTitle: (name: string) => string;
+      selectGitAuthTitle: (name: string) => string;
+      authenticationStatus: string;
+      usingCredentials: (domain: string, login: string) => string;
+      accountNotCompatible: (urlDomain: string, name: string) => string;
+      gitRef: string;
     };
     devDeployments: {
       common: {

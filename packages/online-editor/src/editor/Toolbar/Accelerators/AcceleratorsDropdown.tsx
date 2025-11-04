@@ -93,7 +93,7 @@ export function AcceleratorsDropdown(props: Props) {
   return (
     <>
       <ResponsiveDropdown
-        title="Accelerators"
+        title={i18n.accelerators.acceleratorsLabel}
         className={"kie-tools--masthead-hoverable"}
         isPlain={true}
         onClose={() => setAcceleratorsDropdownOpen(false)}

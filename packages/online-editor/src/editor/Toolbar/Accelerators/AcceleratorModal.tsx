@@ -104,7 +104,7 @@ export function AcceleratorModal(props: Props) {
     <Modal
       isOpen={props.isOpen}
       onClose={props.onClose}
-      aria-label="Accelerator"
+      aria-label={i18n.accelerators.acceleratorLabel}
       variant={ModalVariant.medium}
       actions={
         props.isApplying && [
@@ -120,7 +120,7 @@ export function AcceleratorModal(props: Props) {
       <Title headingLevel="h1">
         <AcceleratorIcon iconUrl={props.accelerator.iconUrl} />
         &nbsp;
-        {props.accelerator.name} Accelerator
+        {i18n.accelerators.acceleratorTitle(props.accelerator.name)}
       </Title>
       <Grid style={{ margin: "1rem 0" }} hasGutter>
         {props.isApplying && (
@@ -131,7 +131,7 @@ export function AcceleratorModal(props: Props) {
 
             <GridItem span={12}>
               <AuthSessionSelect
-                title={`Select Git authentication for '${props.accelerator.name}' Accelerator`}
+                title={i18n.accelerators.selectGitAuthTitle(props.accelerator.name)}
                 authSessionId={selectedAuthSessionId}
                 setAuthSessionId={(newSelectedAuthSessionId) => {
                   setSelectedAuthSessionId(newSelectedAuthSessionId);
@@ -147,13 +147,15 @@ export function AcceleratorModal(props: Props) {
             {authSession && (
               <GridItem span={12}>
                 {isCompatibleAuthSession ? (
-                  <Alert variant="info" isInline title="Authentication Status">
-                    Using {selectedAuthProvider?.domain} credentials for {(authSession as GitAuthSession).login}
+                  <Alert variant="info" isInline title={i18n.accelerators.authenticationStatus}>
+                    {i18n.accelerators.usingCredentials(
+                      selectedAuthProvider?.domain || "",
+                      (authSession as GitAuthSession).login
+                    )}
                   </Alert>
                 ) : (
-                  <Alert variant="danger" isInline title="Authentication Status">
-                    Selected account is not compatible with {urlDomain}, where {props.accelerator.name} Accelerator is
-                    hosted.
+                  <Alert variant="danger" isInline title={i18n.accelerators.authenticationStatus}>
+                    {i18n.accelerators.accountNotCompatible(urlDomain || "", props.accelerator.name)}
                   </Alert>
                 )}
               </GridItem>
@@ -168,7 +170,7 @@ export function AcceleratorModal(props: Props) {
               {props.accelerator.gitRepositoryUrl}
             </a>
           </p>
-          Git ref:{" "}
+          {i18n.accelerators.gitRef}{" "}
           <small>
             <pre style={{ display: "inline" }}>@{props.accelerator.gitRepositoryGitRef}</pre>
           </small>

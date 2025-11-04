@@ -97,6 +97,15 @@ export const zh: TranslatedDictionary<OnlineI18n> = {
     appliedAt: "此加速器应用于：",
     applyDisclaimer:
       "此操作是永久性的。应用加速器后所做的任何更改都可能导致您的文件位于不同的目录中。",
+    acceleratorLabel: "加速器",
+    acceleratorsLabel: "加速器",
+    acceleratorTitle: (name: string) => `${name} 加速器`,
+    selectGitAuthTitle: (name: string) => `为 '${name}' 加速器选择 Git 身份验证`,
+    authenticationStatus: "身份验证状态",
+    usingCredentials: (domain: string, login: string) => `使用 ${domain} 凭据用于 ${login}`,
+    accountNotCompatible: (urlDomain: string, name: string) =>
+      `所选帐户与 ${urlDomain} 不兼容，${name} 加速器托管在该域上。`,
+    gitRef: "Git 引用：",
   },
   devDeployments: {
     common: {

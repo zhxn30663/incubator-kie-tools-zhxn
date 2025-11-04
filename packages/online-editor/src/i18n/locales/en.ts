@@ -97,6 +97,15 @@ export const en: OnlineI18n = {
     appliedAt: "This Accelerator was applied at:",
     applyDisclaimer:
       "This action is permanent. Any changes made after applying an Accelerator may result in your files being in different directories.",
+    acceleratorLabel: "Accelerator",
+    acceleratorsLabel: "Accelerators",
+    acceleratorTitle: (name: string) => `${name} Accelerator`,
+    selectGitAuthTitle: (name: string) => `Select Git authentication for '${name}' Accelerator`,
+    authenticationStatus: "Authentication Status",
+    usingCredentials: (domain: string, login: string) => `Using ${domain} credentials for ${login}`,
+    accountNotCompatible: (urlDomain: string, name: string) =>
+      `Selected account is not compatible with ${urlDomain}, where ${name} Accelerator is hosted.`,
+    gitRef: "Git ref:",
   },
   devDeployments: {
     common: {

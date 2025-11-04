@@ -24,12 +24,14 @@ import { Button, ButtonVariant } from "@patternfly/react-core/dist/js/components
 import { AcceleratorModal } from "./AcceleratorModal";
 import { AcceleratorIcon } from "./AcceleratorIcon";
 import { Icon } from "@patternfly/react-core/dist/js/components/Icon";
+import { useOnlineI18n } from "../../../i18n";
 
 type Props = {
   workspaceId: string;
 };
 
 export function AcceleratorIndicator(props: Props) {
+  const { i18n } = useOnlineI18n();
   const [isAcceleratorDetailsModalOpen, setAcceleratorDetailsModalOpen] = useState(false);
   const currentAccelerator = useCurrentAccelerator(props.workspaceId);
 
@@ -46,7 +48,7 @@ export function AcceleratorIndicator(props: Props) {
             <AcceleratorIcon iconUrl={currentAccelerator.iconUrl} />
           </Icon>
           &nbsp;
-          {currentAccelerator.name} Accelerator
+          {i18n.accelerators.acceleratorTitle(currentAccelerator.name)}
         </>
       }
     >
