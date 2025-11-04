@@ -18,3 +18,4 @@
  */
 
 export { en } from "./en";
+export { zh_CN } from "./zh_CN";
