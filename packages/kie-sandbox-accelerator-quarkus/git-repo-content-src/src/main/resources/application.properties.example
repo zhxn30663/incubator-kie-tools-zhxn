@@ -1,0 +1,125 @@
+# =============================================================================
+# 数据中台集成配置示例 (Data Platform Integration Example Configuration)
+# =============================================================================
+#
+# 本文件展示了如何配置 DMN Accelerator 与数据中台集成
+# 复制此文件内容到 application.properties 并根据您的需求修改
+#
+# This file shows how to configure DMN Accelerator with Data Platform integration
+# Copy this content to application.properties and modify according to your needs
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# 示例 1: AGC (自动发电控制) 场景
+# Example 1: AGC (Automatic Generation Control) Scenario
+# -----------------------------------------------------------------------------
+
+## 启用数据中台集成
+data-platform.enabled=true
+
+## 数据中台服务地址
+quarkus.rest-client.data-platform.url=http://172.101.1.172:7000/DataAdapter
+
+## DMN 决策名称（与您的 DMN 文件中的决策名称一致）
+data-platform.dmn-decision=AGCDecision
+
+## 调度间隔：每1秒执行一次
+data-platform.schedule-interval-seconds=1
+
+## 输入参数映射
+## DMN 输入参数 -> 数据中台标签
+data-platform.input-mappings.powerDemand=T_TODCS.P_AGC_MODIFY_1
+data-platform.input-mappings.currentGeneration=T_TODCS.P_AGC_MODIFY_2
+data-platform.input-mappings.frequency=T_TODCS.P_AGC_MODIFY_3
+
+## 输出参数映射
+## DMN 输出参数 -> 数据中台标签
+data-platform.output-mappings.adjustmentValue=T_TODCS.P_AGC_OUTPUT_1
+data-platform.output-mappings.controlSignal=T_TODCS.P_AGC_OUTPUT_2
+
+
+# -----------------------------------------------------------------------------
+# 示例 2: 交通信号灯控制 场景
+# Example 2: Traffic Light Control Scenario
+# -----------------------------------------------------------------------------
+
+# data-platform.enabled=true
+# quarkus.rest-client.data-platform.url=http://172.101.1.172:7000/DataAdapter
+#
+# ## DMN 决策名称
+# data-platform.dmn-decision=TrafficLightDecision
+#
+# ## 调度间隔：每2秒执行一次
+# data-platform.schedule-interval-seconds=2
+#
+# ## 输入参数映射
+# data-platform.input-mappings.weather=T_TODCS.Weather
+# data-platform.input-mappings.timeOfDay=T_TODCS.TimeOfDay
+# data-platform.input-mappings.trafficDensity=T_TODCS.TrafficDensity
+#
+# ## 输出参数映射
+# data-platform.output-mappings.lightColor=T_TODCS.LightColor
+# data-platform.output-mappings.duration=T_TODCS.Duration
+
+
+# -----------------------------------------------------------------------------
+# 示例 3: 多输入多输出 场景
+# Example 3: Multiple Inputs and Outputs Scenario
+# -----------------------------------------------------------------------------
+
+# data-platform.enabled=true
+# quarkus.rest-client.data-platform.url=http://172.101.1.172:7000/DataAdapter
+#
+# ## DMN 决策名称
+# data-platform.dmn-decision=ComplexDecision
+#
+# ## DMN 命名空间（如果有多个同名决策）
+# data-platform.dmn-namespace=https://kie.org/dmn/_YOUR-DMN-ID
+#
+# ## 调度间隔：每5秒执行一次
+# data-platform.schedule-interval-seconds=5
+#
+# ## 输入参数映射（支持多个输入）
+# data-platform.input-mappings.temperature=T_TODCS.Sensor_Temperature
+# data-platform.input-mappings.pressure=T_TODCS.Sensor_Pressure
+# data-platform.input-mappings.humidity=T_TODCS.Sensor_Humidity
+# data-platform.input-mappings.windSpeed=T_TODCS.Sensor_WindSpeed
+# data-platform.input-mappings.solarRadiation=T_TODCS.Sensor_Solar
+#
+# ## 输出参数映射（支持多个输出）
+# data-platform.output-mappings.status=T_TODCS.System_Status
+# data-platform.output-mappings.alert=T_TODCS.System_Alert
+# data-platform.output-mappings.recommendation=T_TODCS.System_Recommendation
+# data-platform.output-mappings.confidence=T_TODCS.System_Confidence
+
+
+# -----------------------------------------------------------------------------
+# 高级配置 (Advanced Configuration)
+# -----------------------------------------------------------------------------
+
+## REST Client 超时设置（毫秒）
+# quarkus.rest-client.data-platform.connect-timeout=5000
+# quarkus.rest-client.data-platform.read-timeout=10000
+
+## 日志级别设置
+# quarkus.log.category."org.kie.kogito.dataplatform".level=DEBUG
+
+## 启用详细的 DMN 执行日志
+# quarkus.log.category."org.kie.kogito".level=DEBUG
+
+## 健康检查配置
+# quarkus.health.extensions.enabled=true
+
+
+# -----------------------------------------------------------------------------
+# 注意事项 (Important Notes)
+# -----------------------------------------------------------------------------
+#
+# 1. DMN 决策名称必须与您的 .dmn 文件中定义的决策名称完全一致
+# 2. 输入输出映射的键（等号左边）是 DMN 中定义的参数名
+# 3. 输入输出映射的值（等号右边）是数据中台的标签全名
+# 4. 调度间隔最小为 1 秒
+# 5. 确保数据中台的标签存在且有数据
+# 6. 首次运行时建议启用 DEBUG 日志以便排查问题
+#
+# -----------------------------------------------------------------------------
