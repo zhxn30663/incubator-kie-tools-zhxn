@@ -18,7 +18,7 @@
  */
 
 import { UnitablesI18n } from "../UnitablesI18n";
-import { zh as zh_common } from "@kie-tools/i18n-common-dictionary";
+import { zh_CN as zh_common } from "@kie-tools/i18n-common-dictionary";
 import { zh as zh_boxed_expression } from "@kie-tools/boxed-expression-component/dist/i18n/locales/zh";
 import { TranslatedDictionary } from "@kie-tools-core/i18n/dist/core";
 
