@@ -18,7 +18,7 @@
  */
 
 import { BoxedExpressionEditorI18n } from "..";
-import { zh as zh_common } from "@kie-tools/i18n-common-dictionary";
+import { zh_CN as zh_common } from "@kie-tools/i18n-common-dictionary";
 import { TranslatedDictionary } from "@kie-tools-core/i18n/dist/core";
 
 export const zh: TranslatedDictionary<BoxedExpressionEditorI18n> = {
